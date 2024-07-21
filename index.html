@@ -1,66 +1,655 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Complexity</title>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TW6XK4FE2P"></script>
+        <script>
+            window.dataLayer = window.dataLayer || []
+            function gtag(){dataLayer.push(arguments)}
+            gtag('js', new Date())
+            gtag('config', 'G-TW6XK4FE2P')
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="./logo.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        <link rel="icon" type="image/x-icon" href="./images/complexity.png">
+        <script src="https://kit.fontawesome.com/0fc9577f47.js" crossorigin="anonymous"></script>
+        <title>Complexity</title>
         <style>
-            nav {
+            body, html {
+                height: 100%;
+                margin: 0;
+                overflow: hidden;
                 font-family: "Space Mono", monospace;
-                font-weight: bold;
-                font-size: 30px;
-                padding: 30px 50px;
+                user-select: none;
             }
 
-            nav img {
-                height: 50px;
+            #container {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background-color: #f0f0f0;
+                overflow: hidden;
+                cursor: grab;
+            }
+
+            #grid {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 10000px;
+                height: 10000px;
+                background-image: radial-gradient(circle, rgba(136, 136, 136, 0.5) 2px, transparent 2px);
+                background-size: 40px 40px;
+                z-index: 2;
+            }
+
+            .box {
+                position: absolute;
+                width: 280px;
+                height: 104px;
+                background-color: #f8f8f8;
+                top: calc(50% - 100px);
+                left: calc(50%);
+                transform: translate(-50%, -50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                border-radius: 15px;
+                cursor: pointer;
+                transition: background 0.25s ease-out;
+            }
+
+            .box:hover {
+                background-color: rgb(235, 235, 235);
+            }
+
+            .box img {
+                width: 40px;
+                margin-right: 15px;
+                border-radius: 8px;
+            }
+
+            .box h1 {
+                font-size: 21px;
+            }
+
+            nav {
+                text-align: right;
+                padding: 30px 40px;
+                background-color: #f8f8f8;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
             }
 
             nav a {
-                color: #333333;
-                float: right;
+                font-size: 18px;
+                margin-left: 15px;
+                cursor: pointer;
             }
 
-            h1 {
-                text-align: center;
-                font-family: "Space Mono", monospace;
+            nav #selected {
+                text-decoration: underline;
+                padding-bottom: 5px;
+            }
+
+            nav #title {
+                cursor: default!important;
+                margin-left: 0px!important;
                 font-weight: bold;
-                font-size: 10rem;
-                color: #333333;
-                margin-bottom: 5px;
-                word-spacing: -50px;
+                float: left;
+                font-size: 22px;
+                position: relative;
+                top: -8px;
             }
 
-            p {
-                text-align: center;
-                font-size: 1.5rem;
-                font-family: "Inter", sans-serif;
+            .sidenav {
+                position: absolute;
+                left: -220px;
+                width: 300px;
+                height: calc(100% - 87px);
+                top: calc(87px);
+                background-color: #f8f8f8;
+                border-right: 1px solid rgba(0, 0, 0, 0.2);
+                transition: all 0.5s ease-in-out;
+                z-index: 3;
             }
 
-            div {
+            .sidenav button {
+                width: 50px;
+                height: 50px;
+                border: 0px;
+                background-color: #F8F8F8;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+                border-radius: 4px;
+                margin: 15px 15px 0px -10px;
+                float: right;
+                transition: all 0.25s ease-out;
+            }
+
+            .sidenav button:hover {
+                background-color: rgba(150, 150, 150, 0.1);
+            }
+
+            .sidenav p {
+                color: rgba(0, 0, 0, 0.5);
+            }
+
+            .sidenav #hint {
                 display: flex;
-                gap: 10px;
                 align-items: center;
                 justify-content: center;
-                font-size: 3rem;
+                position: absolute;
+                flex-direction: column;
+                top: 40%;
+                width: 280px;
+                left: 10px;
+                display: none;
+                transition: all 0.25s linear;
+            }
+
+            #hint p {
+                margin-top: -10px;
+            }
+            
+            #contactbtn {
+                background-color: #F8F8F8;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                color: rgb(10, 10, 10);
+                padding: 10px 20px;
+                border-radius: 8px;
+                transition: all 0.25s ease-out;
+            }
+
+            #contactbtn:hover {
+                background-color: rgba(150, 150, 150, 0.1);
+            }
+
+            .background {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                background-color: rgba(0, 0, 0, 0.4);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                z-index: 4;
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+            }
+
+            #contactform {
+                background-color: rgb(245, 245, 245);
+                display: flex;
+                align-items: start;
+                justify-content: center;
+                flex-direction: column;
+                padding: 40px 50px 40px 50px;
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                border-radius: 16px;
+                width: 350px;
+                z-index: 5;
+                transform: translateY(50px);
+                transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+                opacity: 0;
+            }
+
+            .background.active {
+                display: flex;
+                opacity: 1;
+            }
+
+            #contactform.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            #contactform #close {
+                width: 30px;
+                height: 30px;
+                background-color: rgb(250, 250, 250);
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                color: rgb(10, 10, 10);
+                border-radius: 6px;
+                transition: all 0.25s ease-out;
                 cursor: pointer;
-                color: #333333;
+                position: relative;
+                left: 320px;
+                top: 35px;
+            }
+
+            #contactform #close:hover {
+                background-color: rgba(150, 150, 150, 0.1);
+            }
+
+            #contactform h1 {
+                margin: 0px;
+            }
+
+            #contactform label {
+                margin-bottom: 5px;
+            }
+
+            #contactform input {
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                border-radius: 6px;
+                width: 330px;
+                padding: 10px;
+                outline: none;
+                font-family: "Space Mono", monospace;
+                margin-bottom: 15px;
+            }
+
+            #contactform textarea {
+                border: 1px solid rgba(0, 0, 0, 0.3);
+                border-radius: 6px;
+                width: 330px;
+                padding: 10px;
+                outline: none;
+                font-family: "Space Mono", monospace;
+                margin-bottom: 15px;
+                height: 100px;
+            }
+
+            #contactform #submit {
+                width: 350px;
+                background-color: rgb(10, 10, 10);
+                color: rgb(245, 245, 245);
+                border: none;
+                border-radius: 6px;
+                transition: all 0.25s ease-out;
+                cursor: pointer;
+                font-family: "Space Mono", monospace;
+                padding: 10px 0px;
+                font-size: 15px;
+            }
+
+            #contactform #submit:hover {
+                background-color: rgb(45, 45, 45);
+            }
+
+            .information {
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                margin: 30px 20px;
+                padding: 25px 10px;
+                color: rgb(10, 10, 10);
+                display: none;
+            }
+
+            .information h1 {
+                margin: 0 10px 20px;
+                font-size: 22px;
+            }
+
+            .information h2 {
+                margin: 5px 0px;
+                font-size: 15px;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+            .information h3 {
+                font-size: 15px;
+                margin: 5px 0px;
+                color: rgb(100, 100, 100);
+            }
+
+            .information p {
+                font-size: 13px;
+                margin: 15px 0px 15px;
+                color: rgb(10, 10, 10);
+                line-height: 1.5;
+            }
+
+            .information i {
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .information img {
+                position: relative;
+                top: 7px;
+                left: -10px;
+                width: 30px;
+                border-radius: 6px;
+            }
+
+            @media (max-width: 800px) {
+                #grid {
+                    transform: scale(0.45);
+                }
+            
+                #contactform {
+                    width: 100%;
+                    height: 100%;
+                    padding: 20px;
+                    border-radius: 0;
+                    transform: translateY(0);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            
+                #contactform h1 {
+                    font-size: 24px;
+                    margin-bottom: 10px;
+                }
+            
+                #contactform input,
+                #contactform textarea {
+                    width: calc(100% - 40px);
+                }
+            
+                #contactform button {
+                    width: 100%;
+                }
+            
+                .background {
+                    padding: 0;
+                }
+            
+                #contactform #close {
+                    width: 30px;
+                    height: 30px;
+                    position: absolute;
+                    top: 50px;
+                    right: 30px;
+                    left: auto;
+                }
+
+                .sidenav {
+                    left: -300px;
+                }
+
+                #mobile-hint {
+                    position: fixed;
+                    bottom: 5px;
+                    font-size: 12px;
+                    right: 15px;
+                    color: rgba(0, 0, 0, 0.5);
+                    display: none;
+                    transition: all 0.5s ease-out;
+                    opacity: 0;
+                }
             }
         </style>
     </head>
     <body>
         <nav>
-            <img src="./logo.png">
-            <a>Complexity</a>
+            <a id="title">Complexity</a>
+            <a id="contactbtn">📫 Contact Us</a>
         </nav>
-        <h1>Coming Soon</h1>
-        <p>We are actively working to update our website.</p>
-        <div>
-            <i class="fa-brands fa-linkedin" onclick="window.open('https://www.linkedin.com/company/complexity-technologies')"></i>
-            <i class="fa-brands fa-square-twitter" onclick="window.open('https://twitter.com/ComplexityTech')"></i>
+        <div id="container">  
+            <div id="grid">
+                <div class="box" id="complexity" data-product="complexity-tab" style="z-index: 2;">
+                    <img src="./images/complexity.png">
+                    <h1>Complexity</h1>
+                </div>
+                <div class="box" id="answerlens" data-product="answerlens-tab" style="z-index: 2;"> 
+                    <img src="./images/answerlens.png">
+                    <h1>Answer Lens</h1>
+                </div>                
+            </div>
+            <svg id="line-svg" width="100%" height="100%" style="position: absolute; top: 0; left: 0; z-index: 1;">
+                <line id="connecting-line" x1="0" y1="0" x2="0" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="1"/>
+            </svg>
+            <p id="mobile-hint">💡 Select a product to view more details.</p>
         </div>
+        <div class="sidenav">
+            <button id="toggle-sidenav"><i class="fa-solid fa-bars"></i></button>
+            <div id="hint">
+                <p style="color: rgba(0, 0, 0, 1)!important;">💡</p>
+                <p>Select a product</p>
+                <p>to view more details.</p>
+            </div>
+            <div id="complexity-tab" class="information">
+                <h1><img src="./images/complexity.png">Complexity</h1>
+                <h2 onclick="window.open('https://complexitytech.com')">complexitytech.com</h2>
+                <h3>Jan 2024 - Present</h3>
+                <p>Welcome to Complexity! We manage a variety of software solutions that make life easier and businesses run smoother. Our mission is to create and oversee tools that help people solve everyday problems with ease. At Complexity, we're all about innovation and simplicity, making sure our products meet your needs in the best way possible.</p>
+                <div id="socials">
+                    <i class="fa-brands fa-linkedin" onclick="window.open('https://www.linkedin.com/company/complexitytech')"></i>
+                    <i class="fa-brands fa-square-x-twitter" onclick="window.open('https://x.com/complexitytech')"></i>
+                </div>
+            </div>
+            <div id="answerlens-tab" class="information">
+                <h1><img src="./images/answerlens.png">Complexity</h1>
+                <h2>Acquired</h2>
+                <h3>Jan 2024 - May 2024</h3>
+                <p>Answer Lens is an iOS app that helps with homework. Just take a picture, and the app detects all the questions in it. It then provides answers and explanations for each question using AI. It's a quick and easy tool to get help with your studies.</p>
+            </div>
+        </div>
+        <div class="background">
+            <form id="contactform" method="POST" action="https://formspree.io/f/manwqyav">
+                <button id="close" type="button">X</button>
+                <h1>Contact Us</h1>
+                <p>We would love to hear from you.</p>
+                <label for="Name">Name</label>
+                <input id="name" name="Name" placeholder="John Doe" required>
+                <label for="Email">Email</label>
+                <input id="email" name="Email" placeholder="john.doe@email.com" required>
+                <label for="Message">Message</label>
+                <textarea id="message" name="Message" placeholder="Your message here..." required></textarea>
+                <button id="submit" type="submit">📨 Submit</button>
+            </form>
+        </div>  
+        <script>
+            const container = document.getElementById('container')
+            const grid = document.getElementById('grid')
+
+            let isPanning = false
+            let startX, startY
+
+            grid.style.left = `${(container.clientWidth - grid.clientWidth) / 2}px`
+            grid.style.top = `${(container.clientHeight - grid.clientHeight) / 2}px`
+
+            function startPan(e) {
+                isPanning = true
+                startX = (e.clientX || e.touches[0].clientX) - grid.offsetLeft
+                startY = (e.clientY || e.touches[0].clientY) - grid.offsetTop
+                container.style.cursor = 'grabbing'
+            }
+
+            function panMove(e) {
+                if (!isPanning) return
+                const x = (e.clientX || e.touches[0].clientX) - startX
+                const y = (e.clientY || e.touches[0].clientY) - startY
+                grid.style.left = `${x}px`
+                grid.style.top = `${y}px`
+                updateLinePosition()
+            }
+
+
+            function endPan() {
+                isPanning = false
+                container.style.cursor = 'grab'
+            }
+
+            container.addEventListener('mousedown', startPan)
+            container.addEventListener('mousemove', panMove)
+            container.addEventListener('mouseup', endPan)
+            container.addEventListener('mouseleave', endPan)
+
+            container.addEventListener('touchstart', startPan)
+            container.addEventListener('touchmove', panMove)
+            container.addEventListener('touchend', endPan)
+            container.addEventListener('touchcancel', endPan)
+
+            let open = false
+            let hasOpened = false
+            let active = "hint"
+
+            document.getElementById("toggle-sidenav").addEventListener("click", (e) => {
+                open = !open
+                hasOpened = true
+                document.getElementById("mobile-hint").style.display = "none"
+                if (open) {
+                    document.querySelector(".sidenav").style.left = "0px"
+                    if (active == "hint") {
+                        document.getElementById(active).style.display = "flex"
+                    } else {
+                        document.getElementById(active).style.display = "inline-block"
+                    }
+                } else {
+                    document.getElementById(active).style.display = "none"
+                    if(isMobileDevice()) {
+                        document.querySelector(".sidenav").style.left = "-300px"
+                    } else {
+                        document.querySelector(".sidenav").style.left = "-220px"
+                    }
+                }
+            })
+
+            let productBtns = document.querySelectorAll(".box")
+            for (let i = 0; i < productBtns.length; i++) {
+                productBtns[i].addEventListener("click", (btn) => {
+                    let currentTab = document.getElementById(active)
+                    if (currentTab) {
+                        currentTab.style.display = "none"
+                    }
+                
+                    active = btn.currentTarget.getAttribute("data-product")
+                    document.getElementById(active).style.display = "inline-block"
+                
+                    open = true
+                    hasOpened = true
+                    document.getElementById("mobile-hint").style.display = "none"
+                    document.querySelector(".sidenav").style.left = "0px"
+                })
+            }
+
+            document.getElementById("contactbtn").addEventListener("click", (e) => {
+                document.querySelector(".background").classList.add("active")
+                setTimeout(() => {
+                    document.getElementById("contactform").classList.add("active")
+                }, 50)
+            })
+
+            document.getElementById("close").addEventListener("click", (e) => {
+                document.getElementById("contactform").classList.remove("active")
+                setTimeout(() => {
+                    document.querySelector(".background").classList.remove("active")
+                }, 500)
+            })
+
+            document.getElementById("answerlens").style.transform = `translate(${200}px, ${-225}px)`
+
+            const complexityBox = document.querySelector('.box')
+            const answerLensBox = document.getElementById('answerlens')
+            const line = document.getElementById('connecting-line')
+
+            function panMove(e) {
+                if (!isPanning) return
+                const x = (e.clientX || e.touches[0].clientX) - startX
+                const y = (e.clientY || e.touches[0].clientY) - startY
+                grid.style.left = `${x}px`
+                grid.style.top = `${y}px`
+                updateLinePosition()
+            }
+
+            function updateLinePosition() {
+                const complexityRect = complexityBox.getBoundingClientRect()
+                const answerLensRect = answerLensBox.getBoundingClientRect()
+                const containerRect = container.getBoundingClientRect()
+            
+                const complexityCenterX = complexityRect.left + complexityRect.width / 2 - containerRect.left
+                const complexityCenterY = complexityRect.top + complexityRect.height / 2 - containerRect.top
+                const answerLensCenterX = answerLensRect.left + answerLensRect.width / 2 - containerRect.left
+                const answerLensCenterY = answerLensRect.top + answerLensRect.height / 2 - containerRect.top
+            
+                line.setAttribute('x1', complexityCenterX)
+                line.setAttribute('y1', complexityCenterY)
+                line.setAttribute('x2', answerLensCenterX)
+                line.setAttribute('y2', answerLensCenterY)
+            }
+
+            updateLinePosition()
+            window.addEventListener('resize', updateLinePosition)
+            container.addEventListener('mousemove', updateLinePosition)
+
+            function isMobileDevice() {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera
+    
+                if (/android/i.test(userAgent)) {
+                    return true
+                }
+
+                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    return true
+                }
+            
+                return window.innerWidth <= 800 && window.innerHeight <= 600
+            }
+
+            let scale = 1
+            let maxScale = 2
+            let minScale = 0.5
+            let lastTouchDistance = 0
+
+            if(isMobileDevice()) {
+                document.getElementById("contactbtn").textContent = "📫"
+                document.getElementById("toggle-sidenav").querySelector("i").className = "fa-solid fa-x"
+                scale = 0.5
+                maxScale = 1.5
+                minScale = 0.25
+
+                setTimeout(() => {
+                    if(hasOpened == false) {
+                        document.getElementById("mobile-hint").style.display = "inline-block"
+                        document.getElementById("mobile-hint").style.opacity = "1"
+                        setTimeout(() => {
+                            document.getElementById("mobile-hint").style.opacity = "0"
+                            setTimeout(() => {
+                                document.getElementById("mobile-hint").style.display = "none"
+                            }, 500)
+                        }, 10000)
+                    }
+                }, 5000)
+            }   
+
+            function zoom(scaleFactor) {
+                scale *= scaleFactor
+                scale = Math.max(minScale, Math.min(maxScale, scale))
+                grid.style.transform = `scale(${scale})`
+                updateLinePosition()
+            }
+
+            function handleWheel(event) {
+                event.preventDefault()
+                const scaleFactor = event.deltaY > 0 ? 0.9 : 1.1
+                zoom(scaleFactor)
+            }
+
+            function handleTouchMove(event) {
+                if (event.touches.length == 2) {
+                    const touch1 = event.touches[0]
+                    const touch2 = event.touches[1]
+                    const currentDistance = Math.sqrt(
+                        Math.pow(touch2.clientX - touch1.clientX, 2) +
+                        Math.pow(touch2.clientY - touch1.clientY, 2)
+                    )
+                
+                    if (lastTouchDistance) {
+                        const scaleFactor = currentDistance / lastTouchDistance
+                        zoom(scaleFactor)
+                    }
+                    lastTouchDistance = currentDistance
+                } else {
+                    lastTouchDistance = 0
+                }
+            }
+
+            function handleTouchEnd() {
+                lastTouchDistance = 0
+            }
+
+            container.addEventListener('wheel', handleWheel, { passive: false })
+            container.addEventListener('touchmove', handleTouchMove)
+            container.addEventListener('touchend', handleTouchEnd)
+        </script>
     </body>
 </html>
