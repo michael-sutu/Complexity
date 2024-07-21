@@ -318,6 +318,17 @@
                 border-radius: 6px;
             }
 
+            #mobile-hint {
+                position: fixed;
+                bottom: 5px;
+                font-size: 12px;
+                right: 15px;
+                color: rgba(0, 0, 0, 0.5);
+                display: none;
+                transition: all 0.5s ease-out;
+                opacity: 0;
+            }
+
             @media (max-width: 800px) {
                 #grid {
                     transform: scale(0.45);
@@ -363,17 +374,6 @@
 
                 .sidenav {
                     left: -300px;
-                }
-
-                #mobile-hint {
-                    position: fixed;
-                    bottom: 5px;
-                    font-size: 12px;
-                    right: 15px;
-                    color: rgba(0, 0, 0, 0.5);
-                    display: none;
-                    transition: all 0.5s ease-out;
-                    opacity: 0;
                 }
             }
         </style>
