@@ -400,11 +400,16 @@
                 <div class="box" id="answerlens" data-product="answerlens-tab" style="z-index: 2;"> 
                     <img src="./images/answerlens.png">
                     <h1>Answer Lens</h1>
-                </div>                
+                </div>
+                <div class="box" id="spacear" data-product="spacear-tab" style="z-index: 2;"> 
+                    <img src="./images/spacear.png">
+                    <h1>SpaceAR</h1>
+                </div>            
             </div>
             <svg id="line-svg" width="100%" height="100%" style="position: absolute; top: 0; left: 0; z-index: 1;">
                 <line id="connecting-line" x1="0" y1="0" x2="0" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="1"/>
-            </svg>
+                <line id="spacear-line" x1="0" y1="0" x2="0" y2="0" stroke="rgba(0, 0, 0, 0.2)" stroke-width="1"/>
+            </svg>            
             <p id="mobile-hint">💡 Select a product to view more details.</p>
         </div>
         <div class="sidenav">
@@ -430,6 +435,18 @@
                 <h3>Jan 2024 - May 2024</h3>
                 <p>Answer Lens is an iOS app that helps with homework. Just take a picture, and the app detects all the questions in it. It then provides answers and explanations for each question using AI. It's a quick and easy tool to get help with your studies.</p>
             </div>
+            <div id="spacear-tab" class="information">
+                <h1><img src="./images/spacear.png">SpaceAR</h1>
+                <h2 onclick="window.open('https://spacear.io')">spacear.io</h2>
+                <h3>July 2024 - Present</h3>
+                <p>SpaceAR is a B2B SaaS platform designed for e-commerce stores to easily set up augmented reality experiences for their products. This innovative solution has been proven to dramatically increase conversion rates and overall revenue. SpaceAR is both affordable and easy to use, making it an essential tool for any online retailer looking to enhance their customer experience and drive sales.</p>
+                <div id="socials">
+                    <i class="fa-brands fa-linkedin" onclick="window.open('https://www.linkedin.com/company/spacear/')"></i>
+                    <i class="fa-brands fa-square-x-twitter" onclick="window.open('https://x.com/spacear_io')"></i>
+                    <i class="fa-brands fa-youtube" onclick="window.open('https://www.youtube.com/channel/UCV6do-3hTRrcZ50Ehm1hO2g')"></i>
+                    <i class="fa-brands fa-instagram" onclick="window.open('https://www.instagram.com/spacear.io/')"></i>
+                </div>
+            </div>            
         </div>
         <div class="background">
             <form id="contactform" method="POST" action="https://formspree.io/f/manwqyav">
@@ -545,10 +562,13 @@
             })
 
             document.getElementById("answerlens").style.transform = `translate(${200}px, ${-225}px)`
+            document.getElementById("spacear").style.transform = `translate(${-220}px, ${160}px)`
 
             const complexityBox = document.querySelector('.box')
             const answerLensBox = document.getElementById('answerlens')
+            const spacearBox = document.getElementById('spacear')
             const line = document.getElementById('connecting-line')
+            const spacearLine = document.getElementById('spacear-line')
 
             function panMove(e) {
                 if (!isPanning) return
@@ -562,17 +582,25 @@
             function updateLinePosition() {
                 const complexityRect = complexityBox.getBoundingClientRect()
                 const answerLensRect = answerLensBox.getBoundingClientRect()
+                const spacearRect = spacearBox.getBoundingClientRect()
                 const containerRect = container.getBoundingClientRect()
-            
+
                 const complexityCenterX = complexityRect.left + complexityRect.width / 2 - containerRect.left
                 const complexityCenterY = complexityRect.top + complexityRect.height / 2 - containerRect.top
                 const answerLensCenterX = answerLensRect.left + answerLensRect.width / 2 - containerRect.left
                 const answerLensCenterY = answerLensRect.top + answerLensRect.height / 2 - containerRect.top
-            
+                const spacearCenterX = spacearRect.left + spacearRect.width / 2 - containerRect.left
+                const spacearCenterY = spacearRect.top + spacearRect.height / 2 - containerRect.top
+
                 line.setAttribute('x1', complexityCenterX)
                 line.setAttribute('y1', complexityCenterY)
                 line.setAttribute('x2', answerLensCenterX)
                 line.setAttribute('y2', answerLensCenterY)
+
+                spacearLine.setAttribute('x1', complexityCenterX)
+                spacearLine.setAttribute('y1', complexityCenterY)
+                spacearLine.setAttribute('x2', spacearCenterX)
+                spacearLine.setAttribute('y2', spacearCenterY)
             }
 
             updateLinePosition()
