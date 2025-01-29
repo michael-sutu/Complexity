@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TW6XK4FE2P"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <script src="https://kit.fontawesome.com/0fc9577f47.js" crossorigin="anonymous"></script>
+
+        <title>Contact Us</title>
+        <link rel="stylesheet" href="../src/styles.css">
+    </head>
+    <body>
+        <nav>
+            <div id="logo" onclick="window.location = '../'">
+                <img src="../img/logo.png">
+                <p>Complexity</p>
+            </div>
+        
+            <button id="hamburger-menu">&#9776;</button>
+        
+            <div id="navigation">
+                <a href="../">Home</a>
+                <a href="../about">About Us</a>
+                <a href="../services">Services</a>
+                <a href="../contact" id="contact-a">Contact Us</a>
+            </div>
+        
+            <button class="contact-btn" id="btn-one" onclick="window.location = '../contact'">Contact Us</button>
+        </nav>  
+
+        <section id="hero" class="contact-hero">
+            <h1 class="scroll-hidden">Contact Us</h1>
+        </section>
+
+        <section id="contact" class="main-contact">
+            <div id="top">
+                <div class="scroll-hidden">
+                    <h2>Get in <span id="linear-text">Touch With Us</span></h2>
+                    <p>Have a question or a project in mind? Contact us today to discuss how we can assist you with innovative software and SaaS solutions.</p>
+                    <div id="contact-list">
+                        <a><span class="material-symbols-outlined">location_on</span>Atlanta, GA</a>
+                        <a href="mailto:michael@complexitytech.com"><span class="material-symbols-outlined">mail</span>michael@complexitytech.com</a>
+                        <a href="tel:+17065214642"><span class="material-symbols-outlined">call</span>+1 706 521 4642</a>
+                    </div>
+                </div>
+                <div>
+                    <form class="scroll-hidden">
+                        <label>Name</label>
+                        <input placeholder="Full Name" class="name-input">
+                        <label>Email</label>
+                        <input placeholder="example@email.com" class="email-input">
+                        <label>Message</label>
+                        <textarea placeholder="Your message..." class="message-input"></textarea>
+                        <button id="btn-two" class="submit-form">Submit</button>
+                        <p>We'll get back to you within <strong>24 hours</strong></p>
+                        <div id="finished">
+                            <span class="material-symbols-outlined">check_circle</span>
+                            <p>Your message has been sent</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="fade"></div>
+        </section>
+
+        <footer id="top-footer">
+            <div id="logo">
+                <img src="../img/logo.png">
+                <p>Complexity</p>
+            </div>
+            <p id="description">We specialize in custom software and SaaS solutions, helping businesses innovate and scale through cutting-edge technology.</p>
+            <div id="navigation">
+                <a href="../">Home</a>
+                <a href="../about">About Us</a>
+                <a href="../services">Services</a>
+                <a href="../contact">Contact Us</a>
+            </div>
+            <div id="socials">
+                <i class="fa-brands fa-x-twitter" onclick="window.open('https://x.com/complexitytech')""></i>
+                <i class="fa-brands fa-linkedin-in" onclick="window.open('https://linkedin.com/company/complexity-tech-solutions')"></i>
+            </div>
+            <p id="copyright">© 2025 Complexity Tech LLC. All rights reserved.</p>
+        </footer>
+        <script src="../src/script.js"></script>
+    </body>
+</html>

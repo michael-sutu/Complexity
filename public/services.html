@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TW6XK4FE2P"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <script src="https://kit.fontawesome.com/0fc9577f47.js" crossorigin="anonymous"></script>
+
+        <title>Services</title>
+        <link rel="stylesheet" href="../src/styles.css">
+    </head>
+    <body>
+        <nav>
+            <div id="logo" onclick="window.location = '../'">
+                <img src="../img/logo.png">
+                <p>Complexity</p>
+            </div>
+        
+            <button id="hamburger-menu">&#9776;</button>
+        
+            <div id="navigation">
+                <a href="../">Home</a>
+                <a href="../about">About Us</a>
+                <a href="../services">Services</a>
+                <a href="../contact" id="contact-a">Contact Us</a>
+            </div>
+        
+            <button class="contact-btn" id="btn-one" onclick="window.location = '../contact'">Contact Us</button>
+        </nav>  
+
+        <section id="hero" class="services-hero">
+            <h1 class="scroll-hidden">Our Services</h1>
+        </section>
+
+        <section id="services">
+            <h2 class="scroll-hidden">Tailored Solutions for <span id="linear-text">Your Business</span></h2>
+            <p class="scroll-hidden">Empowering businesses with customized technology solutions that drive efficiency, foster innovation, and fuel sustainable growth.</p>
+            <div id="container">
+                <div id="custom-software" class="service">
+                    <img src="../img/custom-software.svg" class="scroll-hidden">
+                    <div>
+                        <span class="material-symbols-outlined scroll-hidden" id="icon">terminal</span>
+                        <h3 class="scroll-hidden">Custom <span id="linear-text">Software Development</span></h3>
+                        <p class="scroll-hidden">We craft reliable, scalable, and efficient software solutions tailored to your business objectives. Whether it’s optimizing existing workflows, automating processes, or creating entirely new systems, we focus on delivering results that drive growth. Our custom solutions are designed to adapt and evolve with your business, ensuring long-term value and performance.</p>
+                        <button class="scroll-hidden" id="btn-two" onclick="window.location = '../contact'">Contact Us</button>
+                    </div>
+                </div>
+                <div id="fade" class="first-fade"></div>
+                <div id="web-saas" class="service">
+                    <div>
+                        <span class="material-symbols-outlined scroll-hidden" id="icon">cloud</span>
+                        <h3 class="scroll-hidden">Web and<span id="linear-text"> SaaS Development</span></h3>
+                        <p class="scroll-hidden">Develop modern, intuitive web applications and SaaS platforms designed to deliver exceptional user experiences. From concept to launch, we work closely with you to ensure your digital presence aligns with your business vision. Whether you're looking to launch a SaaS product or revamp your website, we create solutions that are not only visually stunning but also functional and easy to use.</p>
+                        <button class="scroll-hidden" id="btn-two" onclick="window.location = '../contact'">Contact Us</button>
+                    </div>
+                    <img src="../img/web.svg" id="inverse-blob" class="scroll-hidden">
+                </div>
+                <div id="fade"></div>
+                <div id="ai-solutions" class="service">
+                    <img src="../img/ai.svg" class="scroll-hidden">
+                    <div>
+                        <span class="material-symbols-outlined scroll-hidden" id="icon">network_intel_node</span>
+                        <h3 class="scroll-hidden"><span id="linear-text">AI-Powered</span> Solutions</h3>
+                        <p class="scroll-hidden">Transform your business with intelligent automation and data-driven insights. Our AI solutions help you streamline operations, reduce manual efforts, and stay ahead in a competitive landscape. From predictive analytics to process automation, we use cutting-edge AI technology to unlock new opportunities and optimize your business for the future.</p>
+                        <button id="btn-two" onclick="window.location = '../contact'" class="scroll-hidden">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div id="top">
+                <div>
+                    <h2 class="scroll-hidden">Get in <span id="linear-text">Touch With Us</span></h2>
+                    <p class="scroll-hidden">Have a question or a project in mind? Contact us today to discuss how we can assist you with innovative software and SaaS solutions.</p>
+                    <div id="contact-list" class="scroll-hidden">
+                        <a><span class="material-symbols-outlined">location_on</span>Atlanta, GA</a>
+                        <a href="mailto:michael@complexitytech.com"><span class="material-symbols-outlined">mail</span>michael@complexitytech.com</a>
+                        <a href="tel:+17065214642"><span class="material-symbols-outlined">call</span>+1 706 521 4642</a>
+                    </div>
+                </div>
+                <div>
+                    <form class="scroll-hidden">
+                        <label>Name</label>
+                        <input placeholder="Full Name" class="name-input">
+                        <label>Email</label>
+                        <input placeholder="example@email.com" class="email-input">
+                        <label>Message</label>
+                        <textarea placeholder="Your message..." class="message-input"></textarea>
+                        <button id="btn-two" class="submit-form">Submit</button>
+                        <p>We'll get back to you within <strong>24 hours</strong></p>
+                        <div id="finished">
+                            <span class="material-symbols-outlined">check_circle</span>
+                            <p>Your message has been sent</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="cta" class="scroll-hidden">
+                <h2>Ready to Elevate your Business?</h2>
+                <button id="btn-four" onclick="window.location = '../contact'"><span id="linear-text">Get A Free Consultation</span></button>
+            </div>
+        </section>
+
+        <footer>
+            <div id="logo">
+                <img src="../img/logo.png">
+                <p>Complexity</p>
+            </div>
+            <p id="description">We specialize in custom software and SaaS solutions, helping businesses innovate and scale through cutting-edge technology.</p>
+            <div id="navigation">
+                <a href="../">Home</a>
+                <a href="../about">About Us</a>
+                <a href="../services">Services</a>
+                <a href="../contact">Contact Us</a>
+            </div>
+            <div id="socials">
+                <i class="fa-brands fa-x-twitter" onclick="window.open('https://x.com/complexitytech')""></i>
+                <i class="fa-brands fa-linkedin-in" onclick="window.open('https://linkedin.com/company/complexity-tech-solutions')"></i>
+            </div>
+            <p id="copyright">© 2025 Complexity Tech LLC. All rights reserved.</p>
+        </footer>
+        <script src="../src/script.js"></script>
+    </body>
+</html>
