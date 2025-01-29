@@ -1154,7 +1154,7 @@ footer #copyright {
 
     #contact #cta {
         border-radius: 0px;
-        width: 100vw;
+        width: calc(100vw - 100px);
         max-width: unset!important;
     }
 
