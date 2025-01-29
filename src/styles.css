@@ -314,6 +314,7 @@ nav #navigation a:hover::after {
     gap: 10%;
     max-width: 1200px;
     margin-bottom: -270px;
+    margin-top: 20px;
 }
 
 #solutions #bottom {
