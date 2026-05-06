@@ -6,10 +6,10 @@ if (document.getElementById("faq")) {
             let icon = question.querySelector("span")
 
             if (answer.style.maxHeight) {
-                answer.style.maxHeight = null 
+                answer.style.maxHeight = null
                 icon.textContent = "add"
             } else {
-                questions.forEach((q) => { 
+                questions.forEach((q) => {
                     let otherAnswer = q.querySelector("p")
                     let otherIcon = q.querySelector("span")
                     otherAnswer.style.maxHeight = null
@@ -23,7 +23,7 @@ if (document.getElementById("faq")) {
     })
 }
 
-if(document.querySelector(".submit-form")) {
+if (document.querySelector(".submit-form")) {
     document.querySelector(".submit-form").addEventListener("click", (e) => {
         e.preventDefault()
 
@@ -45,12 +45,16 @@ if(document.querySelector(".submit-form")) {
             .then(response => response.json())
             .then(data => {
                 document.querySelectorAll("form > *").forEach((element) => {
-                    if(element.id == "finished") {
+                    if (element.id == "finished") {
                         element.style.display = "block"
                     } else {
                         element.remove()
                     }
                 })
+
+                const url = new URL(window.location.href)
+                url.searchParams.set('g', 'success')
+                window.history.pushState({}, '', url)
             })
             .catch(error => {
                 console.error("Error: ", error)
