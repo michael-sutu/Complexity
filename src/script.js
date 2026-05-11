@@ -27,9 +27,51 @@ if (document.querySelector(".submit-form")) {
     document.querySelector(".submit-form").addEventListener("click", (e) => {
         e.preventDefault()
 
-        const name = document.querySelector(".name-input").value
-        const email = document.querySelector(".email-input").value
-        const message = document.querySelector(".message-input").value
+        const nameInput = document.querySelector(".name-input")
+        const emailInput = document.querySelector(".email-input")
+        const messageInput = document.querySelector(".message-input")
+        const errorElement = document.querySelector(".form-error")
+        const submitButton = document.querySelector(".submit-form")
+
+        const name = nameInput.value.trim()
+        const email = emailInput.value.trim()
+        const message = messageInput.value.trim()
+
+        errorElement.textContent = ""
+        errorElement.style.display = "none"
+
+        const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+        if (!name) {
+            errorElement.textContent = "Please enter your name."
+            errorElement.style.display = "block"
+            nameInput.focus()
+            return
+        }
+
+        if (!email) {
+            errorElement.textContent = "Please enter your email."
+            errorElement.style.display = "block"
+            emailInput.focus()
+            return
+        }
+
+        if (!emailIsValid) {
+            errorElement.textContent = "Please enter a valid email address."
+            errorElement.style.display = "block"
+            emailInput.focus()
+            return
+        }
+
+        if (!message) {
+            errorElement.textContent = "Please enter a message."
+            errorElement.style.display = "block"
+            messageInput.focus()
+            return
+        }
+
+        submitButton.disabled = true
+        submitButton.textContent = "Sending..."
 
         fetch("../api/form", ({
             method: "POST",
@@ -58,6 +100,10 @@ if (document.querySelector(".submit-form")) {
             })
             .catch(error => {
                 console.error("Error: ", error)
+                errorElement.textContent = "Something went wrong. Please try again."
+                errorElement.style.display = "block"
+                submitButton.disabled = false
+                submitButton.textContent = "Submit"
             })
     })
 }

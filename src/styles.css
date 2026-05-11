@@ -63,14 +63,18 @@ textarea {
     resize: none;
 }
 
-#btn-one, #btn-two, #btn-three {
+#btn-one,
+#btn-two,
+#btn-three {
     position: relative;
     z-index: 1;
     overflow: hidden;
     border: none;
 }
 
-#btn-one::before, #btn-two::before, #btn-three::before {
+#btn-one::before,
+#btn-two::before,
+#btn-three::before {
     content: '';
     position: absolute;
     border-radius: 100px;
@@ -93,10 +97,10 @@ textarea {
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 2px; 
+    padding: 2px;
     background: linear-gradient(to right, #5356EC, #8453ED);
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -227,7 +231,7 @@ nav #navigation a:hover::after {
 
 #hero {
     display: flex;
-    position: absolute; 
+    position: absolute;
     background-color: black;
     height: calc(100% - 235px);
     border-radius: 22px;
@@ -248,9 +252,11 @@ nav #navigation a:hover::after {
     min-height: 450px;
 }
 
-.about-hero, .services-hero, .contact-hero {
-    height: 300px!important;
-    background-image: url('../img/small-hero.png')!important;
+.about-hero,
+.services-hero,
+.contact-hero {
+    height: 300px !important;
+    background-image: url('../img/small-hero.png') !important;
     filter: brightness(200%);
 }
 
@@ -263,11 +269,13 @@ nav #navigation a:hover::after {
     bottom: 0;
     border-radius: 22px;
     background: rgba(0, 0, 0, 0.4);
-    z-index: -1; 
+    z-index: -1;
 }
 
-.about-hero::before, .services-hero::before, .contact-hero::before {
-    background: rgba(0, 0, 0, 0)!important;
+.about-hero::before,
+.services-hero::before,
+.contact-hero::before {
+    background: rgba(0, 0, 0, 0) !important;
 }
 
 #hero h1 {
@@ -340,9 +348,9 @@ nav #navigation a:hover::after {
 }
 
 #solutions #bottom #icon {
-    background: linear-gradient(to right, #5356EC, #8453ED); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
+    background: linear-gradient(to right, #5356EC, #8453ED);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     background-clip: text;
     font-size: 40px;
 }
@@ -366,7 +374,7 @@ nav #navigation a:hover::after {
 }
 
 #bottom #read-more:hover span {
-    transform: translateX(10px); 
+    transform: translateX(10px);
 }
 
 #item {
@@ -503,7 +511,7 @@ nav #navigation a:hover::after {
 
 .main-contact {
     margin-top: 400px;
-    background: none!important;
+    background: none !important;
 }
 
 .main-contact #fade {
@@ -527,9 +535,9 @@ nav #navigation a:hover::after {
 }
 
 #contact #contact-list span {
-    background: linear-gradient(to right, #5356EC, #8453ED); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
+    background: linear-gradient(to right, #5356EC, #8453ED);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-right: 15px;
     transform: translateY(5px);
@@ -608,11 +616,11 @@ footer {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: -8px!important;
+    margin: -8px !important;
 }
 
 #top-footer #logo {
-    margin-top: 45px!important;
+    margin-top: 45px !important;
 }
 
 footer #logo {
@@ -644,7 +652,7 @@ footer #description {
 footer #navigation {
     display: flex;
     align-items: center;
-    gap: 20px;   
+    gap: 20px;
 }
 
 footer #navigation a {
@@ -675,7 +683,7 @@ footer #socials i:hover {
 footer #copyright {
     margin-top: 20px;
     border-top: 1px solid #E8E8E8;
-    color: #E8E8E8; 
+    color: #E8E8E8;
     padding-top: 20px;
     width: 800px;
     text-align: center;
@@ -716,7 +724,7 @@ footer #copyright {
     gap: 15px;
 }
 
-#overview .image-container > div {
+#overview .image-container>div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -724,11 +732,11 @@ footer #copyright {
     gap: 15px;
 }
 
-#overview .image-container > div > #stat:first-child {
+#overview .image-container>div>#stat:first-child {
     transform: translateY(-15px);
 }
 
-#overview .image-container > div > #stat:last-child {
+#overview .image-container>div>#stat:last-child {
     transform: translateY(15px);
 }
 
@@ -786,7 +794,7 @@ footer #copyright {
     margin-bottom: 10px;
 }
 
-#why > p {
+#why>p {
     max-width: 600px;
     text-align: center;
     margin-bottom: 45px;
@@ -806,9 +814,9 @@ footer #copyright {
 }
 
 #why #container #item span {
-    background: linear-gradient(to right, #5356EC, #8453ED); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
+    background: linear-gradient(to right, #5356EC, #8453ED);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     background-clip: text;
     font-size: 40px;
 }
@@ -820,7 +828,7 @@ footer #copyright {
     flex-direction: column;
 }
 
-#services > p {
+#services>p {
     text-align: center;
 }
 
@@ -843,10 +851,10 @@ footer #copyright {
     padding-top: 50px;
 }
 
-#services #container div > span {
-    background: linear-gradient(to right, #5356EC, #8453ED); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
+#services #container div>span {
+    background: linear-gradient(to right, #5356EC, #8453ED);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     background-clip: text;
     font-size: 40px;
 }
@@ -876,7 +884,7 @@ footer #copyright {
 }
 
 #services .first-fade {
-    transform: translateX(calc(50vw - 160px)) translateY(-300px)!important;
+    transform: translateX(calc(50vw - 160px)) translateY(-300px) !important;
 }
 
 @keyframes fadeIn {
@@ -884,6 +892,7 @@ footer #copyright {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -907,7 +916,7 @@ footer #copyright {
 
     #solutions h3 {
         font-size: 25px;
-        margin: 15px auto!important;
+        margin: 15px auto !important;
     }
 
     #solutions #icon {
@@ -941,11 +950,11 @@ footer #copyright {
     }
 
     .service {
-        gap: 50px!important;
+        gap: 50px !important;
     }
 
     .service img {
-        width: 25vw!important;
+        width: 25vw !important;
     }
 }
 
@@ -968,8 +977,8 @@ footer #copyright {
     }
 
     #solutions #item {
-        width: calc(100% - 60px)!important;
-        min-height: unset!important;
+        width: calc(100% - 60px) !important;
+        min-height: unset !important;
     }
 
     #partner {
@@ -999,42 +1008,59 @@ footer #copyright {
     }
 
     #why #item {
-        width: calc(100% - 60px)!important;
-        min-height: unset!important;
+        width: calc(100% - 60px) !important;
+        min-height: unset !important;
     }
 
-    #services > p {
+    #services>p {
         margin-bottom: 50px;
     }
 
     .service {
-        padding-top: 10px!important;
+        padding-top: 10px !important;
     }
 
     .service img {
         display: none;
     }
 
-    .about-hero, .services-hero, .contact-hero {
+    .about-hero,
+    .services-hero,
+    .contact-hero {
         max-height: calc(100vh - 200px);
     }
 
-    #overview, #services, .main-contact {
+    #overview,
+    #services,
+    .main-contact {
         margin-top: min(calc(100vh - 130px), 370px) !important;
     }
 }
 
 #hamburger-menu {
-    display: none; 
+    display: none;
     font-size: 30px;
     background: none;
     border: none;
     cursor: pointer;
 }
 
+.form-error {
+    display: none;
+    color: #ff4d4d;
+    font-size: 14px;
+    margin: 5px 0 10px 0;
+    font-weight: 500;
+}
+
+.submit-form:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
 @media (max-width: 730px) {
     #hamburger-menu {
-        display: block; 
+        display: block;
         position: absolute;
         right: 10px;
         top: 10px;
@@ -1143,7 +1169,7 @@ footer #copyright {
     }
 
     #contact form {
-        transform: translateX(-30px)!important;
+        transform: translateX(-30px) !important;
         width: calc(100%);
     }
 
@@ -1155,23 +1181,27 @@ footer #copyright {
     #contact #cta {
         border-radius: 0px;
         width: calc(100vw - 100px);
-        max-width: unset!important;
+        max-width: unset !important;
     }
 
     footer img {
         margin-top: 15px;
     }
 
-    .about-hero, .services-hero, .contact-hero {
-        height: 100px!important;
+    .about-hero,
+    .services-hero,
+    .contact-hero {
+        height: 100px !important;
     }
 
-    #overview, #services, .main-contact {
-        margin-top: 160px!important;
+    #overview,
+    #services,
+    .main-contact {
+        margin-top: 160px !important;
     }
 
     footer p {
-        max-width: calc(100% - 40px)!important;
+        max-width: calc(100% - 40px) !important;
     }
 }
 
@@ -1186,7 +1216,7 @@ footer #copyright {
         max-width: calc(100% - 20px);
     }
 
-    #why > p {
+    #why>p {
         text-align: left;
     }
 }
